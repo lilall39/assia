@@ -17,33 +17,94 @@
   flex: 1;
 }
 
+.page-home .main {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Fond accueil uniquement (voir variables --color-home-bg). Autres pages = blanc (reset). */
+html:has(body.page-home),
+body.page-home {
+  background-color: var(--color-home-bg);
+}
+
 /* ---------- Header / Navigation ---------- */
+/* Au-dessus du viewport : fixed = même effet qu’absolute sur le hero, mais reste au scroll */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   right: 0;
   z-index: 100;
+  max-width: none;
   height: var(--header-height);
-  padding: 0 var(--section-padding-x);
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
-  transition: background-color var(--transition-base), color var(--transition-base);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
-.site-header.scrolled,
-.site-header.light {
-  background: var(--color-white);
+/* État transparent : aucun fond ni overlay
+   (pas de color ici : sinon les <a> en inherit deviennent noirs avant la règle page-home) */
+.site-header.header-transparent {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.page-home .site-header.header-transparent {
+  overflow: visible;
+}
+
+/* Après scroll (> 50px) : fond lisible */
+.site-header.header-scrolled {
+  background-color: #EDEBE7 !important;
   color: var(--color-black);
-  box-shadow: 0 1px 0 var(--color-gray-200);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
 
+/* Garde-fou anti-surcharge (extensions/theme navigateur) */
+header#site-header.site-header.header-scrolled {
+  background: #EDEBE7 !important;
+  background-color: #EDEBE7 !important;
+}
+
+/* Logo : aucun fond, ombre ni effet — image posée directement sur le header */
 .site-header .logo {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  letter-spacing: var(--letter-spacing-wide);
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  height: var(--header-height);
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+
+.site-header .logo .logo-main,
+.site-header .logo .logo-home {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  vertical-align: middle;
+  filter: none;
+  box-shadow: none;
+}
+
+/* Doublon visuel réservé à l’accueil header transparent (HOME agrandi) */
+.site-header .logo .logo-home {
+  display: none;
+  pointer-events: none;
 }
 
 .site-header .nav-list {
@@ -52,32 +113,120 @@
 }
 
 .site-header .nav-link {
+  font-family: "Prata", serif;
   font-size: var(--font-size-sm);
+  font-weight: 700;
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  transition: opacity var(--transition-fast);
+  color: var(--color-black);
+  transition: opacity var(--transition-fast), color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .site-header .nav-link:hover {
   opacity: 0.7;
 }
 
-/* Header en blanc sur la page d'accueil (hero) */
+/* Page d’accueil : pas de padding / marge qui décale le header (plein écran sur le hero) */
 .page-home .site-header {
-  color: var(--color-white);
+  padding: 0;
+  margin: 0;
+  align-items: center;
 }
 
-.page-home .site-header.scrolled {
+/* Pas de color: #fff sur le header entier — le logo hériterait et le PNG peut être mal rendu.
+   Le menu seul est en blanc ; le logo garde ses couleurs natives (aucun filtre). */
+.page-home .site-header.header-transparent .nav-link {
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75), 0 0 18px rgba(0, 0, 0, 0.35);
+}
+
+.page-home .site-header.header-transparent .nav-toggle {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.75));
+}
+
+/* Avant scroll : logo un peu plus grand qu’après scroll (bandeau inchangé à 80px) */
+.page-home .site-header.header-transparent .logo {
+  isolation: isolate;
+  z-index: 2;
+  height: calc(var(--header-height) * 1.1);
+  max-height: none;
+  align-self: center;
+  overflow: visible;
+}
+
+/* Partie haute (icône + MAROC) : blanc — uniquement avant scroll */
+.page-home .site-header.header-transparent .logo .logo-main {
+  /* Masque la ligne HOME — recouverte par .logo-home agrandi */
+  clip-path: inset(0 0 var(--logo-home-hide-bottom) 0);
+  filter: var(--filter-logo-header-white);
+  mix-blend-mode: normal !important;
+  opacity: 1;
+}
+
+/* Ligne HOME : même filtre que MAROC */
+.page-home .site-header.header-transparent .logo .logo-home {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center bottom;
+  clip-path: inset(var(--logo-home-show-from-top) 0 0 0);
+  transform: scale(var(--logo-home-scale));
+  transform-origin: center bottom;
+  filter: var(--filter-logo-header-white);
+  mix-blend-mode: normal !important;
+  opacity: 1;
+}
+
+.page-home .site-header.header-scrolled {
   color: var(--color-black);
 }
 
-/* Menu mobile */
+.page-home .site-header.header-scrolled .nav-link {
+  color: var(--color-black);
+  text-shadow: none;
+}
+
+.page-home .site-header.header-scrolled .nav-toggle {
+  filter: none;
+}
+
+/* Après scroll : logo intégré au bandeau, sans encart */
+.page-home .site-header.header-scrolled .logo {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  height: var(--header-height);
+  max-height: none;
+}
+
+.page-home .site-header.header-scrolled .logo .logo-main {
+  clip-path: none !important;
+  height: 100%;
+  max-height: none;
+}
+
+.page-home .site-header.header-scrolled .logo .logo-home {
+  display: none !important;
+}
+
+/* Menu mobile (hamburger) */
 .nav-toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: var(--space-sm);
+  margin-left: auto;
 }
 
 .nav-toggle span {
@@ -100,7 +249,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--color-white);
+    background: #EDEBE7;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -115,6 +264,16 @@
 
   .site-header .nav-link {
     font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: #0a0a0a;
+  }
+
+  /* Accueil : menu plein écran ouvert = fond clair → liens noirs (priorité sur le blanc !important) */
+  .page-home .site-header.header-transparent .nav-list.open .nav-link {
+    color: #0a0a0a !important;
+    text-shadow: none;
+    font-family: "Prata", serif;
+    font-weight: 700;
   }
 }
 
@@ -191,6 +350,7 @@
 
 .section-title.light {
   color: var(--color-white);
+  font-weight: 700;
 }
 
 /* ---------- Boutons ---------- */

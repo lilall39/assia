@@ -6,15 +6,18 @@
   <title>Assia – Agence d'architecture & aménagement intérieur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/variables.css">
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/home.css">
 </head>
 <body class="page page-home">
-  <header class="site-header" id="site-header">
-    <a href="index.html" class="logo">Assia</a>
+  <header class="site-header header-transparent" id="site-header">
+    <a href="index.html" class="logo">
+      <img class="logo-main" src="assets/images/logo-maroc-home-transparent.png" alt="Maroc Home" width="140" height="38">
+      <img class="logo-home" src="assets/images/logo-maroc-home-transparent.png" alt="" width="140" height="38" aria-hidden="true">
+    </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -32,25 +35,80 @@
     <!-- Hero plein écran -->
     <section class="hero">
       <div class="hero-bg"></div>
-      <img
-        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80"
-        alt=""
-        class="hero-bg-img"
-        width="1920"
-        height="1080"
-        fetchpriority="high"
-      >
+      <div class="hero-carousel" aria-hidden="true">
+        <img
+          src="assets/images/hero-0.png"
+          alt="Chambre élégante avec fauteuils blancs et ambiance lumineuse"
+          class="hero-bg-img hero-slide is-active"
+          data-hero-tagline="Un cocon de douceur dans un décor graphique. Quand le confort devient une expérience."
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+        >
+        <img
+          src="assets/images/hero-1.png"
+          alt="Console en travertin devant une alcôve terracotta"
+          class="hero-bg-img hero-slide hero-slide--marine"
+          data-hero-tagline="La beauté d'une console réalisée en travertin dans une alcôve chaleureuse."
+          width="1920"
+          height="1080"
+          loading="eager"
+        >
+        <img
+          src="assets/images/hero-2.png"
+          alt="Salon minimaliste avec table basse en pierre claire"
+          class="hero-bg-img hero-slide"
+          data-hero-tagline="Élégance brute d'une table basse en travertin. Chaque pièce est unique, façonnée par la nature, et offre des nuances et textures variées qui captent le regard."
+          width="1920"
+          height="1080"
+          loading="eager"
+        >
+      </div>
       <div class="hero-inner">
         <h1 class="hero-title">L’espace réinventé</h1>
-        <p class="hero-tagline">Conception et réalisation de projets d’aménagement intérieur sur mesure.</p>
+        <p class="hero-tagline">
+          <span class="hero-tagline-intro is-active">Conception et réalisation de projets d’aménagement intérieur sur mesure.</span>
+          <span class="hero-tagline-item">Un cocon de douceur dans un décor graphique. Quand le confort devient une expérience.</span>
+          <span class="hero-tagline-item">La beauté d'une console réalisée en travertin dans une alcôve chaleureuse.</span>
+          <span class="hero-tagline-item">Élégance brute d'une table basse en travertin. Chaque pièce est unique, façonnée par la nature, et offre des nuances et textures variées qui captent le regard.</span>
+        </p>
       </div>
     </section>
 
     <!-- Ce que nous faisons -->
     <section class="section what-we-do reveal">
       <div class="section-inner">
-        <h2 class="section-title">Ce que nous faisons</h2>
-        <p>Nous concevons et réalisons des espaces de vie uniques, de la conception à la livraison. Cuisines, salles de bain, aménagements sur mesure : une approche exigeante au service de votre projet.</p>
+        <div class="philosophy-grid">
+          <div class="philosophy-left">
+            <h2 class="section-title">~~~~~~ NOTRE PHILOSOPHIE</h2>
+            <p>Nous considérons la pierre comme une matière d’exigence, au service de l’harmonie et du détail. Depuis plus de 20 ans, nous avons construit une entreprise familiale reconnue dans l’univers de la pierre décorative, autour du marbre, du travertin et du zellige. Nous avons un savoir-faire dans la conception de tables en matériau et de créations sur-mesure, alliant tradition, finesse et sens du design.</p>
+          </div>
+          <div class="philosophy-right">
+            <h3>NOTRE CONCEPT ~~~~~~</h3>
+            <p>Nous avons structuré une organisation locale capable de livrer des projets d'aménagement artisanaux, cadrés, planifiés et suivis avec rigueur.</p>
+            <div class="concept-dropdown-row">
+              <details class="concept-dropdown">
+                <summary class="concept-badge">Réseau crédible Marocain</summary>
+                <p class="concept-dropdown-content">Des ateliers et artisans au Maroc, sélectionnés pour la qualité de leur exécution.</p>
+              </details>
+              <details class="concept-dropdown">
+                <summary class="concept-badge">Process visible</summary>
+                <p class="concept-dropdown-content">Une coordination centralisée et un suivi structuré à chaque étape. Des délais définis à l'avance, formalisés et tenables.</p>
+              </details>
+            </div>
+            <div class="concept-dropdown-row concept-dropdown-row-secondary">
+              <details class="concept-dropdown">
+                <summary class="concept-badge">Méthode claire</summary>
+                <p class="concept-dropdown-content">Une coordination centralisée et un suivi structuré à chaque étape. Des délais définis à l'avance, formalisés et tenables.</p>
+              </details>
+              <details class="concept-dropdown">
+                <summary class="concept-badge">Sélection stricte</summary>
+                <p class="concept-dropdown-content">Nous sélectionnons les projets que nous retenons afin de garantir une exécution maîtrisée</p>
+              </details>
+            </div>
+          </div>
+          <p class="philosophy-note">Créer un lieu, c’est saisir les attentes profondes de ceux qui y vivent.</p>
+        </div>
       </div>
     </section>
 

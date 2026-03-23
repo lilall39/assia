@@ -9,3 +9,6 @@
 
 # Logs
 *.log
+.vercel
+.venv-analyze/
+node_modules/

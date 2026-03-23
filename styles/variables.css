@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap");
+
 /* ============================================
    Variables – Agence architecture / minimaliste
    ============================================ */
@@ -14,9 +16,14 @@
   --color-gray-500: #5a5a5a;
   --color-gray-600: #3a3a3a;
   --color-gray-700: #2a2a2a;
+  --color-terracotta: #A35C46;
+  /* Fond header après scroll / menu mobile plein écran */
+  --color-header-bg: #EDEBE7;
+  /* Fond accueil uniquement = même teinte que le header */
+  --color-home-bg: #EDEBE7;
 
   /* Typographie */
-  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "Jost", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -54,4 +61,11 @@
   --max-width-content: 1200px;
   --max-width-narrow: 720px;
   --header-height: 80px;
+  /* Découpe logo (bande « HOME » en bas du PNG) — ajuster si le rendu décale */
+  --logo-home-hide-bottom: 28%;
+  --logo-home-show-from-top: 72%;
+  --logo-home-scale: 1.22;
+  /* Accueil + header transparent : logo en blanc (après scroll : filter none sur le PNG) */
+  --filter-logo-header-white: brightness(0) invert(1) contrast(1.12) saturate(0)
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
 }
