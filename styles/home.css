@@ -139,12 +139,43 @@
   display: block;
 }
 
+.hero .hero-realisations-link {
+  position: absolute;
+  right: var(--section-padding-x);
+  bottom: var(--section-padding-x);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.25rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+}
+
+.hero .hero-realisations-link::after {
+  content: "→";
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+.hero .hero-realisations-link:hover {
+  color: #ffffff;
+  opacity: 0.98;
+}
+
 /* ---------- Section Ce que nous faisons ---------- */
 .what-we-do {
   background: #ffffff !important;
   margin-top: 0;
   padding-top: calc(var(--section-padding-y) + 4.5em);
-  padding-bottom: calc(var(--section-padding-y) + 1em);
+  padding-bottom: calc(
+    var(--section-padding-y) + 1em + 2 * var(--font-size-lg) * var(--line-height-relaxed)
+  );
 }
 
 .what-we-do .section-inner {
