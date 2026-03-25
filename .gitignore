@@ -15,3 +15,5 @@ node_modules/
 
 # Exports web (ne pas versionner)
 assets/videos/*_files/
+.env.local
+.env*.local

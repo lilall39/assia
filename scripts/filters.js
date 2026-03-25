@@ -26,13 +26,25 @@
     var shouldShowVideo = filter === "traditionnel";
     document.querySelectorAll(".project-card[data-video-card]").forEach(function (videoCard) {
       videoCard.classList.toggle("show-video", shouldShowVideo);
+      var video = videoCard.querySelector("video");
+      if (!video) return;
       if (!shouldShowVideo) {
-        var video = videoCard.querySelector("video");
-        if (video) {
-          video.pause();
-          video.currentTime = 0;
-          video.muted = true;
-        }
+        video.pause();
+        video.currentTime = 0;
+        video.muted = true;
+        return;
+      }
+
+      // Sur certains navigateurs (surtout en prod), l’autoplay ne démarre pas tout de suite
+      // quand on affiche un <video> après un display:none. On force le play.
+      video.muted = true;
+      video.playsInline = true;
+      try {
+        video.load();
+      } catch (e) {}
+      var playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(function () {});
       }
     });
   }
