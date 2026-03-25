@@ -394,7 +394,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--space-lg);
-  padding-top: calc(2 * var(--font-size-lg) * var(--line-height-relaxed));
+  padding-top: calc(var(--font-size-lg) * var(--line-height-relaxed));
 }
 
 .home-project-card {
