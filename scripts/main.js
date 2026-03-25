@@ -229,6 +229,78 @@
     });
   }
 
+  /* ---------- Ancres page d’accueil : ouvrir le <details> ciblé puis faire défiler ---------- */
+  function openDetailsFromHash() {
+    var hash = window.location.hash;
+    if (hash === "#concept-reseau") {
+      var concept = document.getElementById("concept-reseau");
+      if (concept && concept.tagName === "DETAILS") {
+        concept.open = true;
+        window.requestAnimationFrame(function () {
+          concept.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+      return;
+    }
+    if (hash === "#approach-cadrage") {
+      var cadrage = document.getElementById("approach-cadrage");
+      if (cadrage && cadrage.tagName === "DETAILS") {
+        cadrage.open = true;
+        window.requestAnimationFrame(function () {
+          cadrage.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+      return;
+    }
+    if (hash === "#approach-etude") {
+      var etude = document.getElementById("approach-etude");
+      if (etude && etude.tagName === "DETAILS") {
+        etude.open = true;
+        window.requestAnimationFrame(function () {
+          etude.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+      return;
+    }
+    if (hash === "#approach-artisans") {
+      var artisans = document.getElementById("approach-artisans");
+      if (artisans && artisans.tagName === "DETAILS") {
+        artisans.open = true;
+        window.requestAnimationFrame(function () {
+          artisans.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+      return;
+    }
+    if (hash === "#approach-fabrication") {
+      var fabrication = document.getElementById("approach-fabrication");
+      if (fabrication && fabrication.tagName === "DETAILS") {
+        fabrication.open = true;
+        window.requestAnimationFrame(function () {
+          fabrication.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+      return;
+    }
+    if (hash === "#approach-livraison") {
+      var livraison = document.getElementById("approach-livraison");
+      if (livraison && livraison.tagName === "DETAILS") {
+        livraison.open = true;
+        window.requestAnimationFrame(function () {
+          livraison.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+      return;
+    }
+  }
+
+  window.addEventListener("hashchange", openDetailsFromHash);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", openDetailsFromHash);
+  } else {
+    openDetailsFromHash();
+  }
+
   /* ---------- Lazy loading des images (natif si supporté) ---------- */
   var images = document.querySelectorAll("img[data-src]");
   if (images.length && "IntersectionObserver" in window) {

@@ -281,7 +281,8 @@ header#site-header.site-header.header-scrolled {
 /* ---------- Footer ---------- */
 .site-footer {
   padding: var(--space-2xl) var(--section-padding-x);
-  background: var(--color-gray-700);
+  padding-bottom: calc(var(--space-2xl) + 3rem);
+  background: #262626;
   color: var(--color-gray-300);
 }
 

@@ -6,6 +6,37 @@
   var cards = document.querySelectorAll(".project-card[data-category]");
   if (!filterBtns.length || !cards.length) return;
 
+  function applyFilter(filter) {
+    filterBtns.forEach(function (b) {
+      b.classList.toggle("active", b.getAttribute("data-filter") === filter);
+    });
+
+    cards.forEach(function (card) {
+      var category = card.getAttribute("data-category");
+      var show;
+      if (filter === "all") {
+        show = category === "avis";
+      } else {
+        show = category === filter;
+      }
+      card.classList.toggle("hidden", !show);
+    });
+
+    /* Vidéos : visibles uniquement sur l’onglet Traditionnel */
+    var shouldShowVideo = filter === "traditionnel";
+    document.querySelectorAll(".project-card[data-video-card]").forEach(function (videoCard) {
+      videoCard.classList.toggle("show-video", shouldShowVideo);
+      if (!shouldShowVideo) {
+        var video = videoCard.querySelector("video");
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+          video.muted = true;
+        }
+      }
+    });
+  }
+
   /* Sur la page Réalisations, on reste sur place et on ouvre l'avis client */
   var isRealisationsPage = /\/pages\/realisations\.html$/.test(window.location.pathname);
   if (isRealisationsPage) {
@@ -122,10 +153,15 @@
       if (avisNextBtn) avisNextBtn.style.display = showNav ? "flex" : "none";
     }
 
-    cards.forEach(function (card) {
+    var avisCards = document.querySelectorAll('.project-card[data-category="avis"]');
+    avisCards.forEach(function (card) {
       card.addEventListener("click", function (event) {
+        /* Si on clique sur une vidéo (ou ses contrôles), on laisse le lecteur agir */
+        if (event.target && event.target.closest && event.target.closest("video")) {
+          return;
+        }
         event.preventDefault();
-        var cardIndex = Array.prototype.indexOf.call(cards, card);
+        var cardIndex = Array.prototype.indexOf.call(avisCards, card);
         if (cardIndex >= 0 && cardIndex < avisItems.length) {
           renderAvis(cardIndex, card);
           avisModal.classList.add("is-open");
@@ -137,11 +173,25 @@
     filterBtns.forEach(function (btn) {
       if (btn.getAttribute("data-filter") === "all") {
         btn.addEventListener("click", function () {
-          renderAvis(0, cards[0]);
+          renderAvis(0, avisCards[0]);
           avisModal.classList.add("is-open");
           avisModal.setAttribute("aria-hidden", "false");
         });
       }
+    });
+
+    /* Bouton “Avis client” sur une carte */
+    document.querySelectorAll(".avis-link[data-avis-index]").forEach(function (btn) {
+      btn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var indexAttr = btn.getAttribute("data-avis-index");
+        var index = Number(indexAttr);
+        if (!Number.isFinite(index)) return;
+        renderAvis(index);
+        avisModal.classList.add("is-open");
+        avisModal.setAttribute("aria-hidden", "false");
+      });
     });
 
     if (avisPrevBtn) {
@@ -174,14 +224,11 @@
   filterBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
       var filter = btn.getAttribute("data-filter");
-      filterBtns.forEach(function (b) {
-        b.classList.toggle("active", b === btn);
-      });
-      cards.forEach(function (card) {
-        var category = card.getAttribute("data-category");
-        var show = filter === "all" || category === filter;
-        card.classList.toggle("hidden", !show);
-      });
+      applyFilter(filter);
     });
   });
+
+  /* Appliquer l’onglet actif au chargement (évite les doublons visibles) */
+  var initialActive = document.querySelector(".filter-btn.active");
+  applyFilter((initialActive && initialActive.getAttribute("data-filter")) || "all");
 })();

@@ -3,44 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fiche complète - Cadrage du besoin</title>
+  <title>Fiche technique — Réseau crédible marocain 01</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --a4-ratio: 210 / 297;
+      --ink: #1a1a1a;
+      --muted: #444;
+      --border: #d9d6d0;
+      --burnt-clay: #a65d43;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
       background: #ecebe7;
       padding: 1rem;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      line-height: 1.5;
     }
 
     .sheet-a4 {
-      width: min(94vw, 900px);
-      aspect-ratio: var(--a4-ratio);
+      width: min(94vw, 720px);
+      max-width: 100%;
+      margin: 0 auto;
       background: #fff;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-      overflow: hidden;
       border-radius: 4px;
+      padding: 1.75rem 1.5rem 2rem;
+      box-sizing: border-box;
     }
 
-    .sheet-a4 img {
+    .sheet-a4 h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0.02em;
+    }
+
+    .sheet-a4 h2 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--burnt-clay);
+      margin: 1.15rem 0 0.35rem;
+      font-family: "Nunito", system-ui, sans-serif;
+      font-weight: 700;
+    }
+
+    .sheet-a4 p {
+      margin: 0 0 0.65rem;
+      font-size: 0.9rem;
+    }
+
+    .sheet-a4 ul {
+      margin: 0 0 0.85rem;
+      padding-left: 1.15rem;
+      font-size: 0.9rem;
+    }
+
+    .sheet-a4 li {
+      margin-bottom: 0.35rem;
+    }
+
+    .sheet-a4 .lede {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--burnt-clay);
+    }
+
+    .recap-table {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      background: #fff;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .recap-table th,
+    .recap-table td {
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.5rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .recap-table th {
+      background: #f5f4f0;
+      font-weight: 700;
+      width: 28%;
+    }
+
+    .recap-table thead th {
+      color: var(--burnt-clay);
+    }
+
+    .recap-table caption {
+      caption-side: top;
+      text-align: left;
+      font-weight: 700;
+      font-size: calc(0.85rem + 1pt);
+      margin-top: 0.65rem;
+      margin-bottom: 0.5rem;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--burnt-clay);
+    }
+
+    .fiche-back {
+      max-width: min(94vw, 720px);
+      margin: 0 auto 0.75rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .fiche-back a {
+      color: #A65D43;
+      text-decoration: underline;
+    }
+
+    .fiche-back a:hover {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <main class="sheet-a4" aria-label="Fiche complète au format A4">
-    <img src="../assets/images/fiche-cadrage-complete.png" alt="Fiche technique complète - Cadrage du besoin">
+  <p class="fiche-back"><a href="../index.html#approach-cadrage">← Retour à « Cadrage du besoin »</a></p>
+  <main class="sheet-a4" aria-label="Fiche technique Réseau crédible marocain 01">
+    <h1>Fiche technique — Réseau crédible marocain 01</h1>
+
+    <p class="lede">Réseau crédible marocain – Ateliers &amp; artisans partenaires</p>
+
+    <h2>Objectif</h2>
+    <p>S’appuyer sur un réseau d’ateliers et d’artisans au Maroc fiables, qualifiés et réguliers, afin de garantir une qualité d’exécution constante sur l’ensemble des projets.</p>
+
+    <h2>Description</h2>
+    <p>Ce pilier repose sur un réseau d’ateliers et d’artisans partenaires au Maroc, sélectionnés pour la qualité de leur travail, leur sérieux dans l’exécution et leur capacité à produire de manière régulière. Ce réseau constitue un actif stratégique du projet : il permet d’accéder à de vrais savoir-faire artisanaux, tout en garantissant un niveau d’exigence compatible avec des standards professionnels.</p>
+
+    <h2>Contenu / périmètre</h2>
+    <ul>
+      <li>Sélection d’ateliers et d’artisans selon des critères de qualité et de fiabilité</li>
+      <li>Évaluation des savoir-faire par typologie de métier (bois, métal, zellige, pierre, etc.)</li>
+      <li>Relations partenariales établies sur la durée</li>
+      <li>Capacité à mobiliser les bons ateliers selon la nature du projet</li>
+      <li>Maintien d’un niveau d’exigence constant (qualité, finitions, délais)</li>
+    </ul>
+
+    <h2>Livrables / preuves</h2>
+    <ul>
+      <li>Liste des ateliers partenaires mobilisables</li>
+      <li>Références de réalisations (si communicables)</li>
+      <li>Typologie des savoir-faire disponibles</li>
+      <li>Processus de sélection et de validation des partenaires</li>
+      <li>Cadre de collaboration avec les ateliers</li>
+    </ul>
+
+    <h2>Entrées nécessaires (si client / investisseur)</h2>
+    <ul>
+      <li>Type de projet envisagé</li>
+      <li>Exigences de qualité / niveau de finition</li>
+      <li>Volumes ou complexité attendus</li>
+    </ul>
+
+    <h2>Bénéfices</h2>
+    <ul>
+      <li>Accès direct à des savoir-faire artisanaux réels</li>
+      <li>Qualité d’exécution maîtrisée</li>
+      <li>Différenciation par l’origine et l’authenticité des ateliers</li>
+      <li>Sécurité opérationnelle sur la production</li>
+      <li>Actif de réseau difficile à répliquer rapidement</li>
+    </ul>
+
+    <h2>Durée estimée</h2>
+    <p>Permanent (Réseau actif)</p>
+
+    <h2>Statut</h2>
+    <p>Actif stratégique interne (Avantage concurrentiel structurel du projet)</p>
+
+    <table class="recap-table">
+      <caption>Tableau récapitulatif — Réseau crédible marocain 01</caption>
+      <thead>
+        <tr>
+          <th scope="col">Élément</th>
+          <th scope="col">Contenu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Nom</th>
+          <td>Réseau crédible marocain – Ateliers &amp; artisans partenaires</td>
+        </tr>
+        <tr>
+          <th scope="row">Objectif</th>
+          <td>Garantir l’accès à des ateliers fiables et une qualité d’exécution constante.</td>
+        </tr>
+        <tr>
+          <th scope="row">Ce qui est couvert</th>
+          <td>Ateliers au Maroc, savoir-faire artisanaux, fiabilité, régularité d’exécution.</td>
+        </tr>
+        <tr>
+          <th scope="row">Actions réalisées</th>
+          <td>Sélection des partenaires, validation des savoir-faire, structuration des relations.</td>
+        </tr>
+        <tr>
+          <th scope="row">Preuves / livrables</th>
+          <td>Liste d’ateliers, typologie des métiers, références de réalisations, cadre de collaboration.</td>
+        </tr>
+        <tr>
+          <th scope="row">Entrées nécessaires</th>
+          <td>Type de projet, exigences de qualité, volumes / complexité.</td>
+        </tr>
+        <tr>
+          <th scope="row">Bénéfices</th>
+          <td>Qualité maîtrisée, différenciation, actif de réseau difficile à copier.</td>
+        </tr>
+        <tr>
+          <th scope="row">Statut</th>
+          <td>Actif stratégique interne / avantage concurrentiel</td>
+        </tr>
+        <tr>
+          <th scope="row">Rôle dans le projet</th>
+          <td>Pilier de la qualité d’exécution et de la crédibilité opérationnelle</td>
+        </tr>
+        <tr>
+          <th scope="row">Étape associée</th>
+          <td>Sélection des artisans &amp; fabrication</td>
+        </tr>
+      </tbody>
+    </table>
   </main>
 </body>
 </html>

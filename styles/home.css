@@ -197,6 +197,31 @@
   width: 100%;
 }
 
+/* Ancres : défilement sous le header fixe */
+#concept-reseau {
+  scroll-margin-top: 6rem;
+}
+
+#approach-cadrage {
+  scroll-margin-top: 6rem;
+}
+
+#approach-etude {
+  scroll-margin-top: 6rem;
+}
+
+#approach-artisans {
+  scroll-margin-top: 6rem;
+}
+
+#approach-fabrication {
+  scroll-margin-top: 6rem;
+}
+
+#approach-livraison {
+  scroll-margin-top: 6rem;
+}
+
 .what-we-do .concept-badge {
   list-style: none;
   cursor: pointer;
@@ -394,6 +419,11 @@
   background: #262626;
 }
 
+/* Agrandir le bloc noir au-dessus du titre */
+.section.approach {
+  padding-top: calc(var(--section-padding-y) + 2.2rem);
+}
+
 .approach .section-inner {
   max-width: var(--max-width-narrow);
   text-align: center;
@@ -438,8 +468,14 @@
 
 .approach-item p {
   font-size: var(--font-size-sm);
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.5;
   margin: 0;
+}
+
+/* Lisibilité : contenu des menus déroulants */
+.approach-item .approach-dropdown p {
+  color: rgba(255, 255, 255, 0.94);
 }
 
 .approach-item .approach-dropdown summary {
@@ -452,7 +488,7 @@
   letter-spacing: var(--letter-spacing-wide);
   margin-bottom: var(--space-sm);
   color: #ffffff;
-  padding-right: 1.2rem;
+  padding-right: 2rem;
 }
 
 .approach-item .approach-dropdown summary::-webkit-details-marker {
@@ -460,25 +496,27 @@
 }
 
 .approach-item .approach-dropdown summary::after {
-  content: "▾";
+  content: "›";
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
+  transform: translateY(-50%) rotate(90deg);
+  font-size: 1.65rem;
+  font-weight: 700;
   line-height: 1;
   transition: transform 0.2s ease;
+  color: #a65d43;
 }
 
 .approach-item .approach-dropdown[open] summary::after {
-  transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(-90deg);
 }
 
 .approach-item .approach-link {
-  color: #ffffff;
+  color: #a65d43;
   text-decoration: underline;
   text-underline-offset: 2px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
@@ -492,13 +530,20 @@
 .cta-section {
   padding: var(--space-3xl) var(--section-padding-x);
   text-align: center;
-  background: var(--color-home-bg);
+  background: #ffffff;
 }
 
 .cta-section .section-title {
   margin-bottom: var(--space-lg);
+  font-family: "Prata", serif;
+  font-size: var(--font-size-3xl);
+  font-weight: 600;
 }
 
 .cta-section .btn {
   margin-top: var(--space-sm);
+}
+
+.cta-section p {
+  font-size: calc(var(--font-size-base) + 1.5pt);
 }
