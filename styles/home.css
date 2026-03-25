@@ -353,7 +353,7 @@
     var(--section-padding-y) + var(--font-size-lg) * var(--line-height-relaxed)
   );
   padding-bottom: calc(
-    var(--section-padding-y) + var(--font-size-lg) * var(--line-height-relaxed)
+    var(--section-padding-y) + 2 * var(--font-size-lg) * var(--line-height-relaxed)
   );
 }
 
