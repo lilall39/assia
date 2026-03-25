@@ -204,16 +204,16 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .page-home .hero .hero-title {
-    animation: hero-title-slide 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+    animation: hero-title-slide 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
   }
 
   .page-home .hero .hero-realisations-link {
-    animation: hero-link-slide 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+    animation: hero-link-slide 1s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
   }
 
   .page-home .hero .hero-tagline-intro.is-active,
   .page-home .hero .hero-tagline-item.is-active {
-    animation: hero-tagline-slide 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: hero-tagline-slide 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
 

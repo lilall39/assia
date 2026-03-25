@@ -62,7 +62,7 @@
     var heroDisplayMs = 3800;
     var heroSlideTransitionMs = 1100;
     var heroPostTransitionPauseMs = 700;
-    var heroIntroDelayMs = 1300;
+    var heroIntroDelayMs = 1580;
     var isSlideAnimating = false;
     var heroCarouselTimeoutId = null;
     var introTextSwitched = false;
